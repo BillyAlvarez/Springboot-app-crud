@@ -1,6 +1,8 @@
 package cl.bja.springboot.app.crud.entities;
 
 
+import cl.bja.springboot.app.crud.validations.IsExistsDb;
+import cl.bja.springboot.app.crud.validations.IsRequired;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
@@ -11,6 +13,9 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @IsRequired
+    @IsExistsDb
+    private String sku;
     @NotBlank(message = "{NotBlank.product.name}")
     @Size(min = 2, max = 50, message = "{Size.product.name}")
     private String name;
@@ -52,5 +57,13 @@ public class Product {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getSku() {
+        return sku;
+    }
+
+    public void setSku(String sku) {
+        this.sku = sku;
     }
 }

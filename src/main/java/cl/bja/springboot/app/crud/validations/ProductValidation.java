@@ -1,4 +1,4 @@
-package cl.bja.springboot.app.crud;
+package cl.bja.springboot.app.crud.validations;
 
 import cl.bja.springboot.app.crud.entities.Product;
 import org.springframework.stereotype.Component;

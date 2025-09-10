@@ -1,7 +1,7 @@
 package cl.bja.springboot.app.crud.controllers;
 
 
-import cl.bja.springboot.app.crud.ProductValidation;
+import cl.bja.springboot.app.crud.validations.ProductValidation;
 import cl.bja.springboot.app.crud.entities.Product;
 import cl.bja.springboot.app.crud.services.ProductService;
 import jakarta.validation.Valid;
