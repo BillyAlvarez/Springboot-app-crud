@@ -1,6 +1,7 @@
 package cl.bja.springboot.app.crud.controllers;
 
 
+import cl.bja.springboot.app.crud.ProductValidation;
 import cl.bja.springboot.app.crud.entities.Product;
 import cl.bja.springboot.app.crud.services.ProductService;
 import jakarta.validation.Valid;
@@ -22,6 +23,9 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private ProductValidation productValidation ;
+
     @GetMapping
     public List<Product> list() {
         return productService.findAll();
@@ -38,6 +42,7 @@ public class ProductController {
 
     @PostMapping
     public ResponseEntity<?> create(@Valid @RequestBody Product product, BindingResult result) {
+        productValidation.validate(product, result);
         if (result.hasErrors()) {
             return validation(result);
         }
